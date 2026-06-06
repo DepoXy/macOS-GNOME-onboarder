@@ -452,6 +452,22 @@ user_link_macos "grealpath"
 
 # --------------------------
 
+# For (other versions of) hexdump and uuidgen; and for some other apps.
+# - E.g.,
+#
+#   $ /usr/bin/hexdump --version
+#   /usr/bin/hexdump: illegal option -- -
+#   usage: hexdump ...
+#
+#   $ /opt/homebrew/opt/util-linux/bin/hexdump --version
+#   hexdump from util-linux 2.42.1
+#
+# - Authored demoed it for findmnt, alas, under Caveats, unsupported on macOS.
+#
+#  brew_app_macos "util-linux"
+
+# --------------------------
+
 # - HSTRY/2024-07-18: Circa 2020, I tried Brew git, but it was
 #   agonizingly slow running custom commands (like those found
 #   in https://github.com/landonb/git-smart, or
