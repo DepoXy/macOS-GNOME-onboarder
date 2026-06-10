@@ -2068,6 +2068,9 @@ if ${BREW_INCLUDE_DIGIKAM:-false}; then
   MACOS_INSTALL_ROSETTA2=true
 
   # REFER/2025-10-01: Mac-only cask.
+  # FIXME/2026-06-10: Need alt. installer, b/c Digikam Homebrew deprecated:
+  #   Warning: digikam has been deprecated because it does not pass
+  #   the macOS Gatekeeper check! It will be disabled on 2026-09-01.
   brew_app_macos "--cask digikam"
 fi
 
