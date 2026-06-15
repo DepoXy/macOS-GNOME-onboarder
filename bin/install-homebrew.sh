@@ -908,13 +908,14 @@ brew_app_macos "rich-cli"
 
 brew_app_macos "dhex"
 
-# *Command-line JSON processor*
-brew_app_macos "jq"
-
 # "Terminal JSON viewer"
 # https://fx.wtf/
 # https://github.com/antonmedv/fx
 brew_app_both "fx"
+
+# *Command-line JSON processor*
+# - Or installed by python-yq as dependency.
+brew_app_macos "jq"
 
 # *yq: Command-line YAML/XML/TOML processor - jq wrapper*
 #   https://kislyuk.github.io/yq/
