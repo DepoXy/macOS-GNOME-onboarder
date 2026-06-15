@@ -919,13 +919,15 @@ brew_app_macos "jq"
 
 # *yq: Command-line YAML/XML/TOML processor - jq wrapper*
 #   https://kislyuk.github.io/yq/
-# Aka `python-yq`. Installs `yq` and `tomlq` (and prob. `jq`).
+#   https://formulae.brew.sh/formula/python-yq
+# Aka `python-yq`. Installs `yq` and `tomlq` (and Homebrew `jq`).
 #
 # - Call tomlq to convert Toml (like .pyproject.toml) to JSON
 #   (for plucking values, perhaps).
 #     https://kislyuk.github.io/yq/#toml-support
 # - See also Go project of same name, but without Toml support:
 #     https://github.com/mikefarah/yq/
+#     https://formulae.brew.sh/formula/yq
 # - Dasel is another possible utility (I didn't demo it,
 #   so not sure how it compares to yq):
 #     https://github.com/TomWright/dasel
