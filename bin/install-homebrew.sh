@@ -814,6 +814,16 @@ brew_app_macos "fd"
 # https://github.com/junegunn/fzf
 brew_app_macos "fzf"
 
+# fzy - Fuzzy finder menu-izer
+# https://github.com/jhawthorn/fzy
+# - E.g.,
+#     declare -a options=(foo bar baz)
+#     chosen="$(printf "%s\n" "${options[@]}" | fzy)"
+# BEGET:
+# https://unix.stackexchange.com/questions/715893/bash-completely-cli-interactive-menu
+# - On author's Linux (Debian) hosts, installed via apt.
+brew_app_macos "fzy"
+
 # bfs — Breadth-first version of find
 # https://tavianator.com/projects/bfs.html
 # https://formulae.brew.sh/formula/bfs
@@ -926,16 +936,6 @@ brew_app_both "fx"
 #   this project 5 years stale, so seems unlikely):
 #     https://github.com/jamesmunns/tomlq
 brew_app_macos "python-yq"
-
-# fzy - Fuzzy finder menu-izer
-# https://github.com/jhawthorn/fzy
-# - E.g.,
-#     declare -a options=(foo bar baz)
-#     chosen="$(printf "%s\n" "${options[@]}" | fzy)"
-# BEGET:
-# https://unix.stackexchange.com/questions/715893/bash-completely-cli-interactive-menu
-# - On author's Linux (Debian) hosts, installed via apt.
-brew_app_macos "fzy"
 
 # --------------------------
 
