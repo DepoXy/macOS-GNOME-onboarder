@@ -915,7 +915,9 @@ brew_app_both "fx"
 
 # *Command-line JSON processor*
 # - Or installed by python-yq as dependency.
-brew_app_macos "jq"
+brew_app_both "jq"
+# So that Homebrew jq "bests" /usr/bin/jq.
+user_link_both "jq jq"
 
 # *yq: Command-line YAML/XML/TOML processor - jq wrapper*
 #   https://kislyuk.github.io/yq/
