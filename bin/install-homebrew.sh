@@ -927,7 +927,9 @@ user_link_both "jq jq"
 # - Call tomlq to convert Toml (like .pyproject.toml) to JSON
 #   (for plucking values, perhaps).
 #     https://kislyuk.github.io/yq/#toml-support
-# - See also Go project of same name, but without Toml support:
+# - See also Go project of same name, but without Toml support.
+#   (Ornot/2026-06-15: Its GH (now?) says it supports TOML... so maybe
+#   this `yq` could also work for parsing .pyproject.toml files. /shrug)
 #     https://github.com/mikefarah/yq/
 #     https://formulae.brew.sh/formula/yq
 # - Dasel is another possible utility (I didn't demo it,
@@ -940,7 +942,18 @@ user_link_both "jq jq"
 # - This might be the tomlq project the yq uses (albeit
 #   this project 5 years stale, so seems unlikely):
 #     https://github.com/jamesmunns/tomlq
-brew_app_macos "python-yq"
+#
+# ISOFF: The "yq" package, written in Go, is jq-dependency-free,
+# and supports --inplace.
+# - If you need "python-yq", install to/use from virtualenv.
+# - ALTLY: Install both:
+#     brew install python-yq
+#     brew unlink python-yq
+#     brew install yq
+#
+#  brew_app_both "python-yq"
+
+brew_app_both "yq"
 
 # --------------------------
 
