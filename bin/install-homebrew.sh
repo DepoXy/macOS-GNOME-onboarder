@@ -1170,6 +1170,13 @@ brew_app_macos "pandoc"
 #     #   sed is /usr/bin/sed
 brew_app_macos "--cask basictex"
 
+# "ronn - convert markdown files to manpages"
+# - "Ronn-NG: An updated fork of ronn."
+#   https://github.com/apjanke/ronn-ng
+#   https://formulae.brew.sh/formula/ronn-ng
+# - pandoc also compiles Markdown to roff.
+brew_app_macos "ronn-ng"
+
 # --------------------------
 
 # CXREF: Per its install output, example config and Bash completion:
