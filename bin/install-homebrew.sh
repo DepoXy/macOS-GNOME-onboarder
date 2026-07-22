@@ -955,6 +955,20 @@ user_link_both "jq jq"
 
 brew_app_both "yq"
 
+# *** CLI CSV
+
+# https://github.com/johnkerl/miller
+# - Calso: DepoXy users will find Linux miller via Snap:
+#     zoidy_captivator/tasks/ubuntu-snaps.yml
+brew_app_macos "miller"
+
+# https://github.com/gurgeous/tennis/
+# https://itsfoss.com/tennis-csv-tool/
+# DUNNO/2026-07-14: Should we tap first?
+#   brew_tap_both "gurgeous/tap"
+#   brew_app_both "tennis"
+brew_app_both "gurgeous/tap/tennis"
+
 # --------------------------
 
 #  # "Perl-powered file rename script with many helpful built-ins"
