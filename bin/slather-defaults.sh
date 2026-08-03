@@ -313,6 +313,7 @@ dock_and_menu_bar_customize() {
   dock_and_menu_bar_customize_dock_automatically_hide_and_show_the_dock
   dock_and_menu_bar_customize_dock_show_indicators_for_open_applications_disable
   dock_and_menu_bar_customize_dock_show_recent_application_in_dock_false
+  dock_and_menu_bar_customize_widgets_show_widgets_on_desktop_no_thank_you
 
   dock_and_menu_bar_customize_dock_remove_superfluous_dock_icons
   dock_and_menu_bar_customize_dock_pin_and_rearrange_apps_to_taste
@@ -406,6 +407,16 @@ dock_and_menu_bar_customize_dock_show_indicators_for_open_applications_disable()
 dock_and_menu_bar_customize_dock_show_recent_application_in_dock_false() {
   echo "Desktop & Dock: Dock: ✗ Show suggested and recent apps in Dock"
   defaults write com.apple.dock show-recents -bool false
+}
+
+# HSTRY/2026-08-03: As of 26.5.2 / Tahoe 26.6, Widgets.
+# - At least I think these are new. I don't remember seeing 'em before
+#   the most recent macOS update (as in, there is a small chance these
+#   existed before, but got enabled recently, and I just forgot).
+dock_and_menu_bar_customize_widgets_show_widgets_on_desktop_no_thank_you() {
+  echo "Desktop & Dock: Widgets: Show Widgets: ✗ On Desktop"
+  defaults write com.apple.WindowManager StandardHideWidgets -bool true
+  # Set '-bool false' to disable (vs. defaults-delete).
 }
 
 dock_and_menu_bar_customize_dock_pin_and_rearrange_apps_to_taste() {
