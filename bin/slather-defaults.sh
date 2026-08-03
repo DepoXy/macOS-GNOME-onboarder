@@ -432,7 +432,9 @@ dock_and_menu_bar_customize_dock_remove_superfluous_dock_icons() {
 }
 
 dock_and_menu_bar_customize_menu_bar_automatically_hide_and_show_the_menu_bar_on_desktop() {
-  echo "Control Center: Menu Bar Only: ✓ Automatically hide and show the menu bar"
+  # PREVY: Before macOS 26.5.2:
+  #   echo "Control Center: Menu Bar Only: ✓ Automatically hide and show the menu bar"
+  echo "Menu Bar: ✓ Automatically hide and show the menu bar"
   echo "  [*Always* | On Desktop Only | In Full Screen Only | Never]"
   # These four options are controlled by two booleans:
   #                                     Always   Desktop   Full Screen   Never
