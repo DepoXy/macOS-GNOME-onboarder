@@ -318,6 +318,7 @@ dock_and_menu_bar_customize() {
   dock_and_menu_bar_customize_dock_pin_and_rearrange_apps_to_taste
 
   dock_and_menu_bar_customize_menu_bar_automatically_hide_and_show_the_menu_bar_on_desktop
+  dock_and_menu_bar_customize_menu_bar_show_menu_bar_background
 
   dock_and_menu_bar_customize_control_center_now_playing_show_in_menu_bar_disable
 
@@ -442,6 +443,22 @@ dock_and_menu_bar_customize_menu_bar_automatically_hide_and_show_the_menu_bar_on
   #   _HIHideMenuBar                       1        1           0          0
   defaults write NSGlobalDomain AppleMenuBarVisibleInFullscreen -bool false
   defaults write NSGlobalDomain _HIHideMenuBar -bool true
+}
+
+# HSTRY/2026-08-03: New macOS ~26.5.2, sets Menu bar translucent by default.
+# - DUNNO: Neither works to change Menu bar at runtime:
+#     killall -KILL SystemUIServer
+#     # killall Dock
+#   - SPIKE: What about logoff or reboot? I'd assume those would work....
+# - If you close/reopen Settings, you'll at least see the toggle change.
+#   - Also, 2 'defaults-domains-dump' and a 'diff' only shows this one
+#     setting. Either not kill'ing correct process, or not supported? /shrug
+# - CPYST: Delete to disable (revert to bleed-through Menu bar,
+#   but then overlaps DepoXy's Weather + Datetime display).
+#     defaults delete NSGlobalDomain SLSMenuBarUseBlurredAppearance
+dock_and_menu_bar_customize_menu_bar_show_menu_bar_background() {
+  echo "Menu Bar: ✓ Show menu bar background"
+  defaults write NSGlobalDomain SLSMenuBarUseBlurredAppearance -bool true
 }
 
 # I thought if I disabled "Now Playing" that I wouldn't see the "Music" tile
