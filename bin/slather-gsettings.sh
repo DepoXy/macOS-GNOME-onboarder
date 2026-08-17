@@ -2550,8 +2550,28 @@ gnome_settings_customize_keyboard_windows_hidden() {
 
   # ***
 
-  gsettings_set "Keyboard Shortcuts > Window Prefs. [Hidden] > ∅ Titlebar Uses System Font" \
-    gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
+  # HSTRY/2026-08-17: Unable to fix Neovide titlebar emoji-not-found issue,
+  # but can at least use a Nerd Font, which lets us use a Font Awesome or
+  # Material Design glyph for the Neovim socket name, which is displayed
+  # in the nvim-lazyb window title.
+  # - ASIDE: See also the DE interface font.
+  #   - E.g., its default on GNOME Shell 48:
+  #       $ gsettings reset org.gnome.desktop.wm.preferences titlebar-font
+  #       $ gsettings get org.gnome.desktop.wm.preferences titlebar-font
+  #       'Adwaita Sans Bold 11'
+  #
+  # USAGE: Ensure the font is installed to ~/.local/share/fonts and
+  # not ~/.fonts, or at least the latter did not work for the author.
+  local titlebar_font="Ubuntu Nerd Font"
+  if fc-list : family | grep -q "^${titlebar_font}\$"; then
+    gsettings_set "Keyboard Shortcuts > Window Prefs. [Hidden] > ∅ Titlebar Font" \
+      gsettings set org.gnome.desktop.wm.preferences titlebar-font "'${titlebar_font} Regular 11'"
+
+    gsettings_set "Keyboard Shortcuts > Window Prefs. [Hidden] > ∅ Titlebar Uses System Font" \
+      gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
+  else
+    >&2 echo "WARNN: Skipping setting Titlebar Font: Missing font: ${titlebar_font}"
+  fi
 
   # ***
 
