@@ -343,7 +343,7 @@ is_hack_font_installed() {
   # SAVVY: 'fontconfig' installed by default on Debian 12 [AFAIK].
   # CPYST:
   # - Reload fonts:
-  #   sudo fc-cache -frv
+  #   sudo fc-cache -rfv
   # - List font paths:
   #   fc-list -f '%{file}\n' | sort
   [ -n "$(fc-list :family=HackNerdFont:style=Regular)" ]
