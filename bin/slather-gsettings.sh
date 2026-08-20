@@ -920,9 +920,19 @@ gnome_settings_customize_multitasking() {
   # App Switching options:
   # - Include apps from all workspaces [default]
   # - Include apps from the current workspace only
+  # - HSTRY/2026-08-20: Was 'true' until now, now 'false'.
+  #   - AFAIK, only affects <Cmd-Tab>, the app window switcher;
+  #     I don't see any change to <Alt-Tab> or to Activities.
+  #     - UCASE: Move Chrome window to another Workspace as
+  #       third alt., i.e., you can have browser window visible,
+  #       minimized, or visible but on another workspace; but
+  #       now <Cmd-Tab> ensures a window on any workspace is
+  #       not as hidden, but is visible and accessible via
+  #       <Cmd-Tab>, rather than needing to <Ctrl-Alt-Left|Right>
+  #       your way over there.
   local widget_path="Settings > Multitasking > App Switching"
   gsettings_set "${widget_path} > Include apps from the current workspace only" \
-    gsettings set org.gnome.shell.app-switcher current-workspace-only true
+    gsettings set org.gnome.shell.app-switcher current-workspace-only false
 }
 
 #     ====
