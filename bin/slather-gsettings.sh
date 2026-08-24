@@ -4063,6 +4063,14 @@ gnome_extension_transparent_window_customize() {
   # - Ha! World's most [vertically] oblong toggle control, wtf.
   dconf_write "${menu_path} > Debug Settings > Debug Mode: Disabled" \
     dconf write ${schema_path}/debug-mode false
+
+  # Avoid competing with Desktop window-dragger key (see
+  # Window Action Key aka mouse-button-modifier: '<Alt>').
+  # - REFER: As reported by yours truly:
+  #   https://github.com/pbxqdown/gnome-shell-extension-transparent-window/issues/38
+  #   https://github.com/pbxqdown/gnome-shell-extension-transparent-window/commit/ee74e74b758a7
+  dconf_write "${menu_path} > Scroll Transparency > Modifier Key: 'super'" \
+    dconf write ${schema_path}/modifier-key "'super'"
 }
 
 #     ===============
