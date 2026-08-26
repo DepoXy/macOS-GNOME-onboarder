@@ -892,8 +892,17 @@ gnome_settings_customize_multitasking() {
   # - A better mechanism (IMO) is the (innovative, IMO) <Cmd> keybinding.
   # "Touch the top-left corner to open the Activies Overview"
   # - Default: true
+  # PREVY/2026-08-26: Author had this 'false' from 2025-26 (I started using
+  # GNOME Shell in January, 2025). But I've since enabled this setting:
+  # - Despite my previous comment, since activating this option recently, I
+  #   *have not* triggered it accidentally. I also don't use my mouse for
+  #   much, so not sure why I'd be mousing top-left (while a window's close
+  #   and minimize buttons might be there, I hardly use those).
+  # - I like the toggle behavior. It's easy to top-left show, top-left hide.
+  # - I find myself hitting <Cmd>... sometimes... so we'll see if I use
+  #   the top-left Activities hot-corner much, intentionally or otherwise.
   gsettings_set "Settings > Multitasking > General > ∅ Hot Corner" \
-    gsettings set org.gnome.desktop.interface enable-hot-corners false
+    gsettings set org.gnome.desktop.interface enable-hot-corners true
 
   # "Drag windows against the top, left, and right screen edges to resize them"
   # - Default: true
