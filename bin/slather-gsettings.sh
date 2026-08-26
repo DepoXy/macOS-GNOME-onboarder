@@ -4125,6 +4125,44 @@ gnome_extension_veil_customize() {
   #     - "spotify"; and
   #     - "St_Icon" [Shortcuts popup].
 
+  # REFER/2026-08-26:
+  #
+  #   $ dconf dump /org/gnome/shell/extensions/veil/
+  #   [/]
+  #   all-items=[
+  #     'Weather',
+  #     'Deja Window',
+  #     'dropbox',
+  #     'spotify',
+  #     'Transparent Window',
+  #     'System stats',
+  #     'Tiling Shell Indicator',
+  #     'St_Icon',
+  #     'Stop Screencast',
+  #     'Stop Screen Sharing',
+  #     'Dwell Click',
+  #     'Accessibility',
+  #     'Keyboard']
+  #   animation-enabled=false
+  #   auto-hide-duration=2
+  #   auto-hide-enabled=false
+  #   custom-close-icon=''
+  #   custom-open-icon=''
+  #   default-visibility=true
+  #   hover-duration=2
+  #   hover-hide-on-leave=false
+  #   interaction-mode='click'
+  #   saved-visibility=false
+  #   visible-items=[
+  #     'Weather',
+  #     'Tiling Shell Indicator',
+  #     'Dwell Click',
+  #     'Accessibility',
+  #     'Keyboard',
+  #     'Stop Screen Sharing',
+  #     'Stop Screencast',
+  #     'System stats']
+
   return 0
 }
 
