@@ -916,7 +916,7 @@ brew_app_both "fx"
 # *Command-line JSON processor*
 # - Or installed by python-yq as dependency.
 brew_app_both "jq"
-# So that Homebrew jq "bests" /usr/bin/jq.
+# So that Homebrew jq precedes /usr/bin/jq on PATH.
 user_link_both "jq jq"
 
 # *yq: Command-line YAML/XML/TOML processor - jq wrapper*
@@ -943,8 +943,8 @@ user_link_both "jq jq"
 #   this project 5 years stale, so seems unlikely):
 #     https://github.com/jamesmunns/tomlq
 #
-# ISOFF: The "yq" package, written in Go, is jq-dependency-free,
-# and supports --inplace.
+# ISOFF: Author picks "yq" over "python-yq" because the "yq" package,
+# written in Go, is jq-dependency-free, and supports --inplace.
 # - If you need "python-yq", install to/use from virtualenv.
 # - ALTLY: Install both:
 #     brew install python-yq
