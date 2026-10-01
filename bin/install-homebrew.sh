@@ -616,6 +616,12 @@ user_link_both "nvim nvim"
 # https://neovide.dev/
 # https://github.com/neovide/neovide
 # ONICE/2025-01-22: This is a pleasant surprise, Neovide is very elegant.
+# - ASIDE/2026-09-30: After unresolved and finally insurmountable Neovide
+#   issues on GNOME Shell/Wayland/Debian, author has (discovered and very
+#   happily) migrated to running Neovim within a Kitty terminal container
+#   (run directly in Kitty, bypassing normal shell (Bash) parent process).
+#   - But we'll keep this installed on macOS, for reference (because still
+#     runs on macOS).
 brew_app_macos "--cask neovide"
 
 # VimR — "Neovim GUI for macOS in Swift"
