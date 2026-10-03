@@ -1252,7 +1252,7 @@ brew_app_macos "exiftool"
 # *Multithreaded PNG optimizer written in Rust*
 # https://github.com/shssoichiro/oxipng
 # https://formulae.brew.sh/formula/oxipng
-brew_app_macos "oxipng"
+brew_app_both "oxipng"
 
 # *Versatile and fast Unicode/ASCII/ANSI graphics renderer*
 # https://hpjansson.org/chafa/
