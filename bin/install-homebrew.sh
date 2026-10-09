@@ -2494,8 +2494,8 @@ create_user_local_bin_symlinks() {
 
   local before_cd="$(pwd -L)"
 
-  mkdir -p "${user_local_bin}"
-  cd "${user_local_bin}"
+  mkdir -p -- "${user_local_bin}"
+  cd -- "${user_local_bin}"
 
   [ -d "${homebrew_bin}" ] || (
     >&2 echo "ERROR: Where's Homebrew bin? It's not at: ${homebrew_bin}" &&
@@ -2512,7 +2512,7 @@ create_user_local_bin_symlinks() {
 
   echo
 
-  cd "${before_cd}"
+  cd -- "${before_cd}"
 }
 
 # Not all Homebrew apps we link start with a 'g', so code specifies
