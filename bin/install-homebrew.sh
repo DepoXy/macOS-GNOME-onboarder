@@ -2539,7 +2539,7 @@ gbrew_symlink() {
 
   echo "Symlinking: Wiring executable: ${brew_app} → ${bin_name}"
 
-  ln -sf "${homebrew_bin}/${brew_app}" "${bin_name}"
+  ln -sf "${brew_path}" "${bin_name}"
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
