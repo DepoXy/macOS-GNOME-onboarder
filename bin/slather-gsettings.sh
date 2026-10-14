@@ -3666,42 +3666,67 @@ gnome_extension_simple_weather_customize() {
 # - Forked:
 #   https://github.com/landonb/switcher       # switcher@tallybark.com
 
-# No-op: Nothing customized.
-
-# Switcher > Settings > Switcher Preferences:
-# - Hotkey to activate Switcher:
-#   - Key                                 [default <Cmd-W> — Author uses <Shift-Ctrl-Space>]
-# - Immediate activation:
-#   - When there is just one result, activate immediately
-#                                         [default disabled]
-#   - Activate immed. this many msec after last keystroke
-#                                         [default 0]
-#   - Activate by pressing a key matching the index in the list
-#                                         [Disable|Function keys|Number keys — default Number keys]
-#   - Ordering criteria                   [Last focused|Most relevant — default Last focused]
-#     - Pattern matching algorithm        [Strict|Fuzzy — default Strict]
-#   - Font size (px)                      [default 40]
-#     - Icon size (px)                    [default 32]
-#   - Width (%)                           [default 64]
-#   - Show workspace indicators           [default disabled]
-#   - Show only apps in curr. workspace   [default disabled]
-#     - "Use Ctrl+w to toggle on the fly"
-#   - Fade Effect                         [default disabled]
-#   - Show Switcher on active display     [default disabled]
-#   - Show original language names        [default disabled]
-#   - Show executable names               [default disabled]
-# - From Usage tips > Read all tips button:
-#   - "Type space separated searches, use the arrow keys to navigate,"
-#      and press Space to activate."
-#   - "You can also click an item with the mouse/touchpad to activate."
-#   - "You can use <Shift-Enter> to bring the acticated window to the
-#      current workspace."
-#   - "Use <Ctrl-Enter> to launch multiple apps or new instances of
-#      already open apps."
-#   - "System settings sections are also available for launching,
-#      just search for them!"
+# WRKLG/2026-10-14: With single setting set ('show-switcher'), what my user sees:
+#   $ dconf dump /org/gnome/shell/extensions/switcher/
+#   [/]
+#   activate-by-key=uint32 2
+#   font-size=uint32 40
+#   launcher-stats='{"gnome-power-panel.desktop":2, "gnome-keyboard-panel.desktop":2, ...}'
+#   max-width-percentage=uint32 64
+#   show-switcher=['<Shift><Control>space']
 
 gnome_extension_switcher_customize() {
+  if ${LINUX_ONBOARDER_EXCLUDE_EXTENSION_SWITCHER:-false}; then
+
+    return
+  fi
+
+  local menu_path="GNOME Extension > Switcher"
+
+  # Note this schema only accessible via dconf, not gsettings
+  # (i.e., "No such schema “org.gnome.shell.extensions”").
+  local schema_path="/org/gnome/shell/extensions/switcher"
+
+  # *** Switcher > Settings > Switcher Preferences
+
+  # **** "Hotkey to activate Switcher"
+
+  # "Key": [Default: <Cmd-W>]
+  # BNDNG: <Shift-Ctrl-Space>
+  dconf_write "${menu_path} > Switcher Preferences > Hotkey to activate switcher > Key" \
+    dconf write ${schema_path}/show-switcher "['<Shift><Control>space']"
+
+  # **** "Immediate activation":
+
+  # - When there is just one result, activate immediately
+  #                                       [default disabled]
+  # - Activate immed. this many msec after last keystroke
+  #                                       [default 0]
+  # - Activate by pressing a key matching the index in the list
+  #                                       [Disable|Function keys|Number keys — default Number keys]
+  # - Ordering criteria                   [Last focused|Most relevant — default Last focused]
+  #   - Pattern matching algorithm        [Strict|Fuzzy — default Strict]
+  # - Font size (px)                      [default 40]
+  #   - Icon size (px)                    [default 32]
+  # - Width (%)                           [default 64]
+  # - Show workspace indicators           [default disabled]
+  # - Show only apps in curr. workspace   [default disabled]
+  #   - "Use Ctrl+w to toggle on the fly"
+  # - Fade Effect                         [default disabled]
+  # - Show Switcher on active display     [default disabled]
+  # - Show original language names        [default disabled]
+  # - Show executable names               [default disabled]
+
+  # *** "Read all tips"
+  #
+  # [Button toggles addit'l text vis'y]:
+  # - "1. Use Super+w (or another shortcut you configured in settings) to start the switcher.
+  #    Type space separated searches, use the arrow keys to navigate, and press Space to activate."
+  # - "2. You can also click an item with the mouse/touchpad to activate."
+  # - "3. You can use Shift+Enter to bring the activated window to the current workspace."
+  # - "4. Use Ctrl+Enter to launch multiple apps or new instances of already open apps"
+  # - "5. System settings sections are also available for launching, just search for them!"
+
   return 0
 }
 
