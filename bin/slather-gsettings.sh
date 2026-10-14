@@ -3662,9 +3662,9 @@ gnome_extension_simple_weather_customize() {
 
 # REFER: *Switcher* by *dlandau*
 # https://extensions.gnome.org/extension/973/switcher/
-# https://github.com/daniellandau/switcher
+# https://github.com/daniellandau/switcher    # switcher@landau.fi
 # - Forked:
-#   https://github.com/landonb/switcher
+#   https://github.com/landonb/switcher       # switcher@tallybark.com
 
 gnome_extension_switcher_customize() {
   # No-op: Nothing customized.
