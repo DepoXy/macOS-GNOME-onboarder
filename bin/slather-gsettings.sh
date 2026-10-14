@@ -3666,42 +3666,42 @@ gnome_extension_simple_weather_customize() {
 # - Forked:
 #   https://github.com/landonb/switcher       # switcher@tallybark.com
 
+# No-op: Nothing customized.
+
+# Switcher > Settings > Switcher Preferences:
+# - Hotkey to activate Switcher:
+#   - Key                                 [default <Cmd-W> — Author uses <Shift-Ctrl-Space>]
+# - Immediate activation:
+#   - When there is just one result, activate immediately
+#                                         [default disabled]
+#   - Activate immed. this many msec after last keystroke
+#                                         [default 0]
+#   - Activate by pressing a key matching the index in the list
+#                                         [Disable|Function keys|Number keys — default Number keys]
+#   - Ordering criteria                   [Last focused|Most relevant — default Last focused]
+#     - Pattern matching algorithm        [Strict|Fuzzy — default Strict]
+#   - Font size (px)                      [default 40]
+#     - Icon size (px)                    [default 32]
+#   - Width (%)                           [default 64]
+#   - Show workspace indicators           [default disabled]
+#   - Show only apps in curr. workspace   [default disabled]
+#     - "Use Ctrl+w to toggle on the fly"
+#   - Fade Effect                         [default disabled]
+#   - Show Switcher on active display     [default disabled]
+#   - Show original language names        [default disabled]
+#   - Show executable names               [default disabled]
+# - From Usage tips > Read all tips button:
+#   - "Type space separated searches, use the arrow keys to navigate,"
+#      and press Space to activate."
+#   - "You can also click an item with the mouse/touchpad to activate."
+#   - "You can use <Shift-Enter> to bring the acticated window to the
+#      current workspace."
+#   - "Use <Ctrl-Enter> to launch multiple apps or new instances of
+#      already open apps."
+#   - "System settings sections are also available for launching,
+#      just search for them!"
+
 gnome_extension_switcher_customize() {
-  # No-op: Nothing customized.
-
-  # Switcher > Settings > Switcher Preferences:
-  # - Hotkey to activate switch:
-  #   - Key                                 [default <Cmd-W> — Author uses <Shift-Ctrl-Space>]
-  # - Immediate activation:
-  #   - When there is just one result, activate immediately
-  #                                         [default disabled]
-  #   - Activate immed. this many msec after last keystroke
-  #                                         [default 0]
-  #   - Activate by pressing a key matching the index in the list
-  #                                         [Disable|Function keys|Number keys — default Number keys]
-  #   - Ordering criteria                   [Last focused|Most relevant — default Last focused]
-  #     - Pattern matching algorithm        [Strict|Fuzzy — default Strict]
-  #   - Font size (px)                      [default 40]
-  #     - Icon size (px)                    [default 32]
-  #   - Width (%)                           [default 64]
-  #   - Show workspace indicators           [default disabled]
-  #   - Show only apps in curr. workspace   [default disabled]
-  #     - "Use Ctrl+w to toggle on the fly"
-  #   - Fade Effect                         [default disabled]
-  #   - Show Switcher on active display     [default disabled]
-  #   - Show original language names        [default disabled]
-  #   - Show executable names               [default disabled]
-  # - From Usage tips > Read all tips button:
-  #   - "Type space separated searches, use the arrow keys to navigate,"
-  #      and press Space to activate."
-  #   - "You can also click an item with the mouse/touchpad to activate."
-  #   - "You can use <Shift-Enter> to bring the acticated window to the
-  #      current workspace."
-  #   - "Use <Ctrl-Enter> to launch multiple apps or new instances of
-  #      already open apps."
-  #   - "System settings sections are also available for launching,
-  #      just search for them!"
-
   return 0
 }
 
