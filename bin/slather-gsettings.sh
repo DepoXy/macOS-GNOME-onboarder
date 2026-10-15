@@ -850,12 +850,14 @@ gnome_settings_customize_appearance() {
     gsettings reset org.gnome.desktop.background picture-opacity
   # Default: 'file:///usr/share/images/desktop-base/desktop-background.xml'
   # - Disable Light Wallpaper Picture
+  # - USYNC: Requires picture-options set to 'none', too.
   gsettings_set "${menu_path} > Picture URI" \
-    gsettings set org.gnome.desktop.background picture-uri ''
+    gsettings set org.gnome.desktop.background picture-uri 'none'
   # Default: 'file:///usr/share/backgrounds/gnome/adwaita-d.jpg'
   # - Disable Dark Wallpaper Picture
+  # - USYNC: Requires picture-options set to 'none', too.
   gsettings_set "${menu_path} > Picture URI Dark" \
-    gsettings set org.gnome.desktop.background picture-uri-dark ''
+    gsettings set org.gnome.desktop.background picture-uri-dark 'none'
   # Default: false
   gsettings_set "${menu_path} > Show Desktop Icons" \
     gsettings reset org.gnome.desktop.background show-desktop-icons
@@ -864,12 +866,22 @@ gnome_settings_customize_appearance() {
   gsettings_set "${menu_path} > Color Shading Type" \
     gsettings set org.gnome.desktop.background color-shading-type 'solid'
 
-  # Default: 'zoom', but using GUI may change, e.g., to 'zoom'.
+  # Default: 'zoom', but using GUI may change it to, e.g., 'zoom'.
   # - Doesn't matter when used with solid color, so leave
   #   at 'zoom', which is what Settings changes it to, so
   #   that ./slather-gsettings.sh --dry-run doesn't diff.
+  # - Though should technically tell GNOME not to render any
+  #   background image (See: 'picture-uri', 'picture-uri-dark').
+  #   - Note if you use empty string, GNOME Shell assumes user
+  #     home, and you'll see error msgs (if you look), e.g.:
+  #       $ gsettings set org.gnome.desktop.background picture-options 'zoom'
+  #       $ gsettings set org.gnome.desktop.background picture-uri ''
+  #       $ journalctl -f
+  #       ...
+  #       Oct 14 14:03:04 hostname gnome-shell[3894]: Failed to load background
+  #         'file:///home/user': Error opening file /home/user: Is a directory
   gsettings_set "${menu_path} > Picture Options" \
-    gsettings set org.gnome.desktop.background picture-options 'zoom'
+    gsettings set org.gnome.desktop.background picture-options 'none'
 
   # Set Background Color.
   # SAVVY: Very dark "green", slight contrast with borderless Chrome windows.
