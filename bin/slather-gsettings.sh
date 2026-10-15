@@ -3718,7 +3718,11 @@ gnome_extension_switcher_customize() {
   #                                       [Disable|Function keys|Number keys — default Number keys]
   # - Ordering criteria                   [Last focused|Most relevant — default Last focused]
   #   - Pattern matching algorithm        [Strict|Fuzzy — default Strict]
+
   # - Font size (px)                      [default 40]
+  dconf_write "${menu_path} > Switcher Preferences > Font size (px)" \
+    dconf write ${schema_path}/font-size "uint32 30"
+
   #   - Icon size (px)                    [default 32]
   # - Width (%)                           [default 64]
   # - Show workspace indicators           [default disabled]
@@ -3738,6 +3742,9 @@ gnome_extension_switcher_customize() {
   # - "3. You can use Shift+Enter to bring the activated window to the current workspace."
   # - "4. Use Ctrl+Enter to launch multiple apps or new instances of already open apps"
   # - "5. System settings sections are also available for launching, just search for them!"
+
+  dconf_write "${menu_path} > Web Searches > Enable Web Searches" \
+    dconf write ${schema_path}/web-search-enabled false
 
   return 0
 }
