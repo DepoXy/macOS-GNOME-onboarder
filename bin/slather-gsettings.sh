@@ -775,6 +775,7 @@ gnome_settings_customize() {
 
   gnome_settings_customize_apps
   gnome_settings_customize_notifications
+  gnome_settings_customize_gnome_clocks
   gnome_settings_customize_search
   gnome_settings_customize_online_accounts
   gnome_settings_customize_sharing
@@ -1018,6 +1019,63 @@ gnome_settings_customize_notifications() {
   #     - Banners > Show Content / "Include msg details in notif banners": Disabled
   #     - Lock Screen > Show Banners / "Show notifications on lock screen": Enabled
   #     - Lock Screen > Show Content / "Include message details on lock screen": Disabled
+}
+
+#     ==============
+# *** WORLD CLOCK(S)
+#     ==============
+
+# SAVVY/2026-10-16: If no clock set, when you expand
+# Notification Center, on left is notifications list
+# (or empty space) with a (poss'ly inactive) [Clear]
+# button on the bottom right, and a *Do Not Disturb*
+# toggle on the bottom left; and on the right is the
+# date, the month's calendar below that, the *Today*
+# section (or *No Events* in perpetuity if, like the
+# author, you don't use GNOME Shell's Calendar) next
+# and below that, if no world clock is set, it shows
+# "Add World Clocks..." (and finally, the bottommost
+# widget, if configured, the Weather).
+# - TL_DR: Set a world clock otherwise Notif. Center
+#   displays "Add World Clocks...".
+#   - Which is fine, whatever, the system date shows
+#     at the top of the Notification Center, why not
+#     also nudge the user to show the time? Not that
+#     the time isn't already in the Top Bar, /whatev
+
+gnome_settings_customize_gnome_clocks() {
+  # Defaults:
+  #   /org/gnome/clocks/world-clocks @aa{sv} []
+  #   /org/gnome/shell/world-clocks/locations @av []
+  # - E.g.:
+  #   gsettings get org.gnome.clocks world-clocks
+  #   gsettings get org.gnome.shell.world-clocks locations
+  #   gsettings set org.gnome.clocks world-clocks "@aa{sv} []"
+  #   gsettings set org.gnome.shell.world-clocks locations "@av []"
+
+  # DUNNO/2026-10-16: Author sees both these strings set when I setup via Clocks GUI.
+  # - But when I run 'gsettings set' manually, *either* of these settings
+  #   causes the Notification Center to show the clock (and not "Add World Clocks...")
+  #   *but neither* of these settings makes the clock show up in Clocks GUI.
+
+  # FTREQ/2026-10-16: Make the location configurable.
+
+  # Show the clock in Notification Center.
+  gsettings_set "[GNOME] Clocks > World > Add World Clock [1/2]" \
+    gsettings set org.gnome.clocks world-clocks \
+    "[{'location': <(uint32 2, <('Minneapolis', 'KMSP', true, [(0.783357105556996, -1.6271510710263237)], [(0.78504848668181115, -1.627761011240018)])>)>}]"
+
+  # Show the clock in Clocks GUI.
+  # - ORNOT: DUNNO: Author sees this set when I add clock via Clocks GUI.
+  #   - But then if I delete this setting and restart Clocks GUI, the
+  #     old clock still appears. So maybe Clocks GUI is using a file?
+  # - ISOFF: The /org/gnome/clocks/world-clocks setting appears to be
+  #   enuf.
+  if false; then
+    gsettings_set "[GNOME] Clocks > World > Add World Clock [1/2]" \
+      gsettings set org.gnome.shell.world-clocks locations \
+      "[<(uint32 2, <('Minneapolis', 'KMSP', true, [(0.783357105556996, -1.6271510710263237)], [(0.78504848668181115, -1.627761011240018)])>)>]"
+  fi
 }
 
 #     ======
