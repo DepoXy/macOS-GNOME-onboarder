@@ -1160,6 +1160,21 @@ brew_app_macos "--HEAD cowsay-org/cowsay/cowsay-files"
 #  https://github.com/julienXX/terminal-notifier
 brew_app_macos "terminal-notifier"
 
+# - 'boxes', 'lolcat', and 'FIGlet', for fancy terminal outputs.
+#
+# https://formulae.brew.sh/formula/boxes
+# https://boxes.thomasjensen.com/
+# https://boxes.thomasjensen.com/boxes-man-1.html
+# https://github.com/ascii-boxes/boxes/
+brew_app_macos "boxes"
+# https://formulae.brew.sh/formula/lolcat
+# https://github.com/busyloop/lolcat
+brew_app_macos "lolcat"
+# https://formulae.brew.sh/formula/figlet
+# https://www.figlet.org/
+# https://github.com/cmatsuoka/figlet
+brew_app_macos "figlet"
+
 # --------------------------
 
 brew_app_macos "restview"
