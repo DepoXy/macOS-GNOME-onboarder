@@ -1253,8 +1253,9 @@ brew_app_macos "--cask ghostty"
 # --------------------------
 
 # INERT/2022-10-11: If you find you need Mongo interface.
-# - NOTE: On some client machines, you may need to start an
+# - SAVVY: On some client machines, you may need to start an
 #   *Admin Access* terminal session to install Robo 3T.
+#
 #  brew_app_macos "robo-3t"
 
 # --------------------------
