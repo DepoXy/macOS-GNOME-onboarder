@@ -1250,6 +1250,11 @@ brew_app_linux "foot"
 # https://ghostty.org/
 brew_app_macos "--cask ghostty"
 
+# Kitty Protocol Terminal image viewer (or colorful ASCII representation).
+# https://github.com/atanunq/viu
+# https://formulae.brew.sh/formula/viu
+brew_app_both "viu"
+
 # --------------------------
 
 # INERT/2022-10-11: If you find you need Mongo interface.
