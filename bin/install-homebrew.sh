@@ -1031,11 +1031,12 @@ fi
 
 # --------------------------
 
-# Linux Mint 19.3 `awk` is actually `gawk`, FYI.
-# (And I don't see plain `awk` installed; meaning,
-#  all my Bash scripts expect `gawk`.)
-brew_app_macos "gawk"
-user_link_macos "gawk" # Will symlink from ~/.local/bin/awk
+# Debian APT's `awk` is actually `gawk`, FYI.
+# - And most of author's shell scripts expect `gawk`.
+# - Note Debian 13's awk is circa 2022, but 2023 gawk
+#   adds --csv option.
+brew_app_both "gawk"
+user_link_both "gawk" # Will symlink from ~/.local/bin/awk
 
 # Installs `/opt/homebrew/bin/diff`.
 brew_app_macos "diffutils"
