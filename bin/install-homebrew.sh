@@ -1213,6 +1213,18 @@ brew_app_macos "--cask basictex"
 # - pandoc also compiles Markdown to roff.
 brew_app_macos "ronn-ng"
 
+# REFER:
+#   https://github.com/phiresky/ripgrep-all
+#   https://formulae.brew.sh/formula/ripgrep-all
+#   https://phiresky.github.io/blog/2019/rga--ripgrep-for-zip-targz-docx-odt-epub-jpg/
+# DPENZ:
+# - Debian: apt install ripgrep pandoc poppler-utils ffmpeg
+# - Hombrw: brew install pandoc poppler ffmpeg
+# AWARE: Author installs 'rg' specially, but Homebrew will want to install its own.
+brew_app_both "rga"
+brew_app_macos "poppler"
+brew_app_macos "ffmpeg"
+
 # --------------------------
 
 # CXREF: Per its install output, example config and Bash completion:
