@@ -501,18 +501,7 @@ dconf_write() {
   local dconf_key="$4"
   local dconf_val="$5"
 
-  local dbus_run_session=""
-  if [ -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
-    # Avoid D-Bus error when called from cron, or from plain session, e.g.:
-    #   $ bash
-    #   $ echo $DBUS_SESSION_BUS_ADDRESS
-    #   unix:path=/run/user/1000/bus
-    #   $ env -i HOME="$HOME" LOGNAME="$LOGNAME" bash --noprofile --norc
-    #   $ echo $DBUS_SESSION_BUS_ADDRESS
-    #   $ dconf write foo bar
-    #   error: Cannot autolaunch D-Bus without X11 $DISPLAY
-    dbus_run_session="dbus-run-session -- "
-  fi
+  local dbus_run_session="$(print_dbus_run_session_if_necessary)"
 
   if print_dconf_write_setting "$@"; then
     if [ "${dconf_action}" = "reset" ]; then
@@ -550,6 +539,23 @@ gsettings_set() {
       gsettings set "${gsettings_schema}" "${gsettings_key}" "${gsettings_val}"
     fi
   fi
+}
+
+# Avoid D-Bus error when called from cron, or from plain session, e.g.:
+#   $ bash
+#   $ echo $DBUS_SESSION_BUS_ADDRESS
+#   unix:path=/run/user/1000/bus
+#   $ env -i HOME="$HOME" LOGNAME="$LOGNAME" bash --noprofile --norc
+#   $ echo $DBUS_SESSION_BUS_ADDRESS
+#   $ dconf write foo bar
+#   error: Cannot autolaunch D-Bus without X11 $DISPLAY
+print_dbus_run_session_if_necessary() {
+  if [ -n "${DBUS_SESSION_BUS_ADDRESS}" ]; then
+
+    return
+  fi
+
+  printf "%s" "dbus-run-session -- "
 }
 
 print_dconf_write_setting() {
