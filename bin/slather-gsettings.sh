@@ -526,17 +526,19 @@ gsettings_set() {
   local gsettings_key="$5"
   local gsettings_val="$6"
 
+  local dbus_run_session="$(print_dbus_run_session_if_necessary)"
+
   if print_gsettings_set_setting "$@"; then
     if [ "${gsettings_action}" = "reset" ]; then
       ! ${LINUX_ONBOARDER_VERBOSE} ||
-        echo "gsettings reset \"${gsettings_schema}\" \"${gsettings_key}\""
+        echo "${dbus_run_session}gsettings reset \"${gsettings_schema}\" \"${gsettings_key}\""
 
-      gsettings reset "${gsettings_schema}" "${gsettings_key}"
+      ${dbus_run_session} gsettings reset "${gsettings_schema}" "${gsettings_key}"
     elif [ "${gsettings_action}" = "set" ]; then
       ! ${LINUX_ONBOARDER_VERBOSE} ||
-        echo "gsettings set \"${gsettings_schema}\" \"${gsettings_key}\" \"${gsettings_val}\""
+        echo "${dbus_run_session}gsettings set \"${gsettings_schema}\" \"${gsettings_key}\" \"${gsettings_val}\""
 
-      gsettings set "${gsettings_schema}" "${gsettings_key}" "${gsettings_val}"
+      ${dbus_run_session} gsettings set "${gsettings_schema}" "${gsettings_key}" "${gsettings_val}"
     fi
   fi
 }
@@ -549,6 +551,17 @@ gsettings_set() {
 #   $ echo $DBUS_SESSION_BUS_ADDRESS
 #   $ dconf write foo bar
 #   error: Cannot autolaunch D-Bus without X11 $DISPLAY
+#   $ gsettings set org.gnome.desktop.screen-time-limits grayscale true
+#   (process:3662160): dconf-WARNING **: 17:14:34.797: failed to commit changes to dconf:
+#     Cannot autolaunch D-Bus without X11 $DISPLAY
+# Calso: If user known to be logged on:
+#   export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+# - Which avoids dbus-run-session output, like:
+#     dbus-daemon[3664030]: [session uid=1000 pid=3664030 pidfd=5]
+#       Activating service name='ca.desrt.dconf' requested by ':1.0'
+#       (uid=1000 pid=3664031 comm="gsettings set org.gnome.desktop.screen-time-limits")
+#     dbus-daemon[3664030]: [session uid=1000 pid=3664030 pidfd=5]
+#       Successfully activated service 'ca.desrt.dconf'
 print_dbus_run_session_if_necessary() {
   if [ -n "${DBUS_SESSION_BUS_ADDRESS}" ]; then
 
